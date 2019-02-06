@@ -1,0 +1,4 @@
+ERROR: [Validation] Code 0 |
+[ VUID-vkBindBufferMemory-buffer-01029 ] Object: 0xb (Type = 8) | 
+In vkBindBufferMemory(), attempting to bind memory (0xb) to object (0xa) which has already been bound to mem object 0xb. The Vulkan spec states: buffer must not already be backed by a memory object 
+(https://www.khronos.org/registry/vulkan/specs/1.1-extensions/html/vkspec.html#VUID-vkBindBufferMemory-buffer-01029)|
