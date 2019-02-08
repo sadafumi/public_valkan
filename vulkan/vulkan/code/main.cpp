@@ -1,5 +1,3 @@
-// vulkan.cpp : アプリケーションのエントリ ポイントを定義します。
-//
 #include <windows.h>
 #include <stdlib.h>
 #include <malloc.h>
@@ -59,10 +57,6 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 			nNowTime = timeGetTime();//今の時間
 			if ((nNowTime - nOldTime) * 60 >= 1000)
 			{
-				if (wind.ChangeDisplay(hInstance, hWnd))
-				{
-					break;
-				}
 				//更新
 				wind.Update();
 				//描画
@@ -76,6 +70,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	timeEndPeriod(1);
 
 	wind.Delete();
+
 	::FreeConsole();
 
 	return (int)msg.wParam;

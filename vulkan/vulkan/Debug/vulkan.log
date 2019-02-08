@@ -51,5 +51,5 @@
   Vulkan_ViewPort.cpp
   Window.cpp
   コードを生成中...
-mtfvd.lib(mtfv.obj) : warning LNK4099: PDB 'mtfv.pdb' が 'mtfvd.lib(mtfv.obj)' で、または 'C:\Share\source\Vulkan_Fast\vulkan\Debug\mtfv.pdb' に見つかりません。デバッグ情報がないものとして、オブジェクトにリンクします。
-  vulkan.vcxproj -> C:\Share\source\Vulkan_Fast\vulkan\Debug\vulkan.exe
+mtfvd.lib(mtfv.obj) : warning LNK4099: PDB 'mtfv.pdb' が 'mtfvd.lib(mtfv.obj)' で、または 'C:\Share\source\public_valkan\vulkan\Debug\mtfv.pdb' に見つかりません。デバッグ情報がないものとして、オブジェクトにリンクします。
+  vulkan.vcxproj -> C:\Share\source\public_valkan\vulkan\Debug\vulkan.exe

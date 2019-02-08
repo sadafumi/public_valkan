@@ -2,10 +2,6 @@
 #include <Windows.h>
 #include "Graphics.h"
 
-bool Window::DisplayMode = true;
-bool Window::Press = false;
-bool Window::Blur = false;
-
 Window::Window()
 {
 }
@@ -94,7 +90,6 @@ void Window::Draw()
 void Window::KeyBoardDown(WPARAM in_wParam, HWND in_hWnd)
 {
 	int nID;
-	Press = false;
 	if (in_wParam == VK_ESCAPE)
 	{
 		nID = MessageBox(in_hWnd, "終了しますか？", "シャットダウンメッセージ", MB_YESNO | MB_DEFBUTTON2);
@@ -109,17 +104,6 @@ bool Window::ChangeDevice(HINSTANCE hInstance, HWND hWnd, bool NewScreen)
 	hInstance = hInstance;
 	NewScreen = NewScreen;
 	hWnd = hWnd;
-	return false;
-}
-bool Window::ChangeDisplay(HINSTANCE hInstance, HWND hWnd)
-{
-	if (Press)
-	{
-		if (this->ChangeDevice(hInstance, hWnd, DisplayMode))
-		{
-			return true;
-		}
-	}
 	return false;
 }
 Utility::Int_Vec2 Window::Get_Windows_Size()

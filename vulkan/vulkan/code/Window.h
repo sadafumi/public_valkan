@@ -1,3 +1,7 @@
+//========================================================================
+//	maked by sadafumi 
+//	2019/2/7
+//========================================================================
 #pragma once
 #include <Windows.h>
 #include <stdio.h>
@@ -15,16 +19,11 @@ public:
 	void Uninit();
 	void Update();
 	void Draw();
-	bool ChangeDisplay(HINSTANCE hInstance, HWND hWnd);
 	Utility::Int_Vec2 Get_Windows_Size();
 private:
 	static LRESULT CALLBACK WndProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam); //ウィンドウプロシージャ
 	static void KeyBoardDown(WPARAM, HWND);
 	bool ChangeDevice(HINSTANCE hInstance, HWND hWnd, bool NewScreen);
-
-	static bool DisplayMode;
-	static bool Press;
-	static bool Blur;
 
 	const char* Class_Name = "  ";
 	const char* Window_Name = "  ";
