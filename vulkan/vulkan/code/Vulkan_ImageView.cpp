@@ -1,4 +1,4 @@
-#include "vulkan.h"
+#include "vulkan_api.h"
 
 void vulkan::data::ImageView::Init(Device * in_Device, Image * in_Image)
 {
@@ -18,7 +18,7 @@ void vulkan::data::ImageView::Init(Device * in_Device, Image * in_Image)
 			VK_COMPONENT_SWIZZLE_A
 		};
 		vinfo.subresourceRange = { VK_IMAGE_ASPECT_COLOR_BIT, 0, 1, 0, 1 };
-		vulkan::Error::Window(vkCreateImageView(in_Device->device, &vinfo, nullptr, &this->ImageViews[i]), "イメージビューの作成に失敗");
+		vulkan::Error::Window(vkCreateImageView(in_Device->device, &vinfo, NULL, &this->ImageViews[i]), "イメージビューの作成に失敗");
 	}
 }
 

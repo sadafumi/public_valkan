@@ -1,4 +1,4 @@
-#include "vulkan.h"
+#include "vulkan_api.h"
 
 
 void vulkan::data::Pipeline_cache::Init(Device* in_Device)
@@ -36,8 +36,8 @@ void vulkan::data::Pipeline::Init(Device* in_Device, ViewPort* in_vp, Scissor* i
 		vertex.flags = 0;
 		vertex.vertexBindingDescriptionCount = 1;
 		vertex.pVertexBindingDescriptions = &in_buff->vi_binding;
-		vertex.vertexAttributeDescriptionCount = 2;
-		vertex.pVertexAttributeDescriptions = in_buff->vi_attribs;
+		vertex.vertexAttributeDescriptionCount = in_buff->vi_attribs.size();
+		vertex.pVertexAttributeDescriptions = in_buff->vi_attribs.data();
 	}
 	
 	VkPipelineInputAssemblyStateCreateInfo ia;
@@ -52,7 +52,9 @@ void vulkan::data::Pipeline::Init(Device* in_Device, ViewPort* in_vp, Scissor* i
 	rs.pNext = NULL;
 	rs.flags = 0;
 	rs.polygonMode = VK_POLYGON_MODE_FILL;
-	rs.cullMode = VK_CULL_MODE_BACK_BIT;
+	rs.cullMode = VK_CULL_MODE_FRONT_BIT;
+	//rs.cullMode = VK_CULL_MODE_BACK_BIT;
+	//rs.cullMode = VK_CULL_MODE_NONE;
 	rs.frontFace = VK_FRONT_FACE_CLOCKWISE;
 	rs.depthClampEnable = VK_FALSE;
 	rs.rasterizerDiscardEnable = VK_FALSE;
@@ -62,15 +64,27 @@ void vulkan::data::Pipeline::Init(Device* in_Device, ViewPort* in_vp, Scissor* i
 	rs.depthBiasSlopeFactor = 0;
 	rs.lineWidth = 1.0f;
 
+	//VkPipelineColorBlendAttachmentState att_state[1];
+	//att_state[0].colorWriteMask = 0xf;
+	//att_state[0].blendEnable = VK_FALSE;
+	//att_state[0].alphaBlendOp = VK_BLEND_OP_ADD;
+	//att_state[0].colorBlendOp = VK_BLEND_OP_ADD;
+	//att_state[0].srcColorBlendFactor = VK_BLEND_FACTOR_ZERO;
+	//att_state[0].dstColorBlendFactor = VK_BLEND_FACTOR_ZERO;
+	//att_state[0].srcAlphaBlendFactor = VK_BLEND_FACTOR_ZERO;
+	//att_state[0].dstAlphaBlendFactor = VK_BLEND_FACTOR_ZERO;
+
 	VkPipelineColorBlendAttachmentState att_state[1];
 	att_state[0].colorWriteMask = 0xf;
-	att_state[0].blendEnable = VK_FALSE;
+	//att_state[0].blendEnable = VK_FALSE;
+	att_state[0].blendEnable = VK_TRUE;
 	att_state[0].alphaBlendOp = VK_BLEND_OP_ADD;
 	att_state[0].colorBlendOp = VK_BLEND_OP_ADD;
-	att_state[0].srcColorBlendFactor = VK_BLEND_FACTOR_ZERO;
-	att_state[0].dstColorBlendFactor = VK_BLEND_FACTOR_ZERO;
-	att_state[0].srcAlphaBlendFactor = VK_BLEND_FACTOR_ZERO;
+	att_state[0].srcColorBlendFactor = VK_BLEND_FACTOR_SRC_ALPHA;
+	att_state[0].dstColorBlendFactor = VK_BLEND_FACTOR_ONE_MINUS_SRC_ALPHA;
+	att_state[0].srcAlphaBlendFactor = VK_BLEND_FACTOR_ONE;
 	att_state[0].dstAlphaBlendFactor = VK_BLEND_FACTOR_ZERO;
+
 
 	VkPipelineColorBlendStateCreateInfo cb;
 	cb.sType = VK_STRUCTURE_TYPE_PIPELINE_COLOR_BLEND_STATE_CREATE_INFO;
@@ -125,6 +139,7 @@ void vulkan::data::Pipeline::Init(Device* in_Device, ViewPort* in_vp, Scissor* i
 	ms.pSampleMask = NULL;
 	ms.rasterizationSamples = VK_SAMPLE_COUNT_1_BIT;
 	ms.sampleShadingEnable = VK_FALSE;
+	//ms.sampleShadingEnable = VK_TRUE;
 	ms.alphaToCoverageEnable = VK_FALSE;
 	ms.alphaToOneEnable = VK_FALSE;
 	ms.minSampleShading = 0.0;

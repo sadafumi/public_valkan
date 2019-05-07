@@ -2,6 +2,7 @@
 #include <cmath>
 #include <assert.h>
 
+
 Utility::Vec3::Vec3()
 {
 	this->x = 0;
@@ -20,7 +21,7 @@ Utility::Vec3 Utility::Vec3::Normalize(Vec3 v)
 {
 	Vec3 Return;
 	Return = v;
-	float length = std::powf((v.x * v.x) + (v.y * v.y) + (v.z * v.z), 0.5f);
+	float length = std::sqrtf((v.x * v.x) + (v.y * v.y) + (v.z * v.z));
 	//length = std::abs(length);
 	if (length > 0)
 	{

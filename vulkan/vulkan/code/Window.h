@@ -3,34 +3,41 @@
 //	2019/2/7
 //========================================================================
 #pragma once
-#include <Windows.h>
+
 #include <stdio.h>
 #include "Utility.h"
+#include "Windows_API.h"
+#include "Wayland.h"
+#include "Xorg.h"
+#include "Window_Data.h"
 #include "Graphics.h"
 
+#ifdef _WIN32
+#include <Windows.h>
+#elif defined(VK_USE_PLATFORM_WAYLAND_KHR)
+#include <linux/input.h>
+#else
+
+#endif  // _WIN32
 class Window
 {
 public:
 	Window();
 	~Window();
-	HWND Create(HWND hWnd, HINSTANCE hInstance, int nCmdShow);
-	void Delete();
 	void Init();
 	void Uninit();
-	void Update();
+	bool Update();
 	void Draw();
-	Utility::Int_Vec2 Get_Windows_Size();
 private:
-	static LRESULT CALLBACK WndProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam); //ウィンドウプロシージャ
-	static void KeyBoardDown(WPARAM, HWND);
-	bool ChangeDevice(HINSTANCE hInstance, HWND hWnd, bool NewScreen);
-
-	const char* Class_Name = "  ";
-	const char* Window_Name = "  ";
-	const int Screen_Width_Size = 1280;
-	const int Screen_Hiegth_Size = 720;
-
 	//ここから下はProjectごとに変えるのもでないと俺が困る
 	Graphics Test;
-};
+	Window_Data data;
+#ifdef _WIN32
+	Windows_API wind;
+#elif defined(VK_USE_PLATFORM_WAYLAND_KHR)
+	Wayland wind;
+#else
 
+#endif  // _WIN32
+
+};

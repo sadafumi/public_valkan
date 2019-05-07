@@ -1,4 +1,4 @@
-#include "vulkan.h"
+#include "vulkan_api.h"
 
 void vulkan::data::Semaphore::Create(Device* in_Device)
 {
@@ -8,4 +8,9 @@ void vulkan::data::Semaphore::Create(Device* in_Device)
 	imageAcquiredSemaphoreCreateInfo.flags = 0;
 
 	vulkan::Error::Window(vkCreateSemaphore(in_Device->device, &imageAcquiredSemaphoreCreateInfo, NULL, &imageAcquiredSemaphore), "CreateSemaphoreƒGƒ‰[");
+}
+
+void vulkan::data::Semaphore::Destroy(Device* in_Device)
+{
+	vkDestroySemaphore(in_Device->device, imageAcquiredSemaphore, NULL);
 }

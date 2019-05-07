@@ -1,4 +1,4 @@
-#include "vulkan.h"
+#include "vulkan_api.h"
 #include <string>
 
 
@@ -191,19 +191,26 @@ void vulkan::Error::Window(VkResult err, const char* out_cher)
 		}
 
 		std::string out_string;
+		std::string end("\n");
 		out_string = in_cher + end_chsr;
 		out_string = out_string + add_cher;
-		MessageBox(NULL, out_string.data(), "Errorメッセージ", MB_OK);
-		//throw out_string.data();
-		exit(-1);
+		out_string = out_string + end;
+		FILE* fp;
+		fp = fopen("Error_log.txt", "w+");
+		fprintf(fp, out_string.data());
+		fclose(fp);
+		printf(out_string.data());
+		//MessageBox(NULL, out_string.data(), "Errorメッセージ", MB_OK);
+		throw out_string.data();
+		//exit(-1);
 	}
 }
 
 void vulkan::Error::Window(bool Check, const char * out_cher)
 {
 	if (Check)
-	{	
-		MessageBox(NULL, out_cher, "boolでのErrorメッセージ", MB_OK);
+	{
+		std::cout << out_cher << std::endl;
 		exit(-1);
 	}
 }

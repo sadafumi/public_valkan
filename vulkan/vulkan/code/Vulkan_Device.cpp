@@ -1,4 +1,4 @@
-#include "vulkan.h"
+#include "vulkan_api.h"
 
 
 void vulkan::data::Device::Init(PhysicalDevice * PhyDevice)
@@ -51,7 +51,14 @@ void vulkan::data::Device::Init(PhysicalDevice * PhyDevice)
 
 	vulkan::Error::Window(vkCreateDevice(PhyDevice->Get_PhyDevice(), &Create_info, NULL, &this->device),"デバイスの生成に失敗");
 
+	vkGetPhysicalDeviceFormatProperties(PhyDevice->Get_PhyDevice(), VK_FORMAT_R8G8B8A8_UNORM, &formatProps);
+
 	delete[] queue_props;
+}
+
+void vulkan::data::Device::Set_Window_Size(Utility::Int_Vec2 in_size)
+{
+	this->window_size = in_size;
 }
 
 void vulkan::data::Device::Uninit()

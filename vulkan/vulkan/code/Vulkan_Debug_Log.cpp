@@ -1,23 +1,24 @@
-#include "vulkan.h"
+#include "vulkan_api.h"
 #include <sstream>
-#include <iostream>
 
+std::vector<std::string> vulkan::data::Debug_Log::Log;
 void vulkan::data::Debug_Log::Init(Instance * Instance)
 {
+	Instance = Instance;
+#ifdef _DEBUG
+
 	VkResult err;
 	dbgCreateDebugReportCallback = (PFN_vkCreateDebugReportCallbackEXT)vkGetInstanceProcAddr(Instance->instance, "vkCreateDebugReportCallbackEXT");
-	if (!dbgCreateDebugReportCallback) 
+	if (!dbgCreateDebugReportCallback)
 	{
-		MessageBox(NULL, "GetInstanceProcAddr: Unable to find vkCreateDebugReportCallbackEXT function.", "Alert1", MB_OK);
-		//MessageBox(NULL, L"GetInstanceProcAddr: Unable to find vkCreateDebugReportCallbackEXT function.", L"Alert1", MB_OK);
+		std::cout << "GetInstanceProcAddr: Unable to find vkCreateDebugReportCallbackEXT function.\n" << std::endl;
 		exit(1);
 	}
 
 	dbgDestroyDebugReportCallback = (PFN_vkDestroyDebugReportCallbackEXT)vkGetInstanceProcAddr(Instance->instance, "vkDestroyDebugReportCallbackEXT");
-	if (!dbgDestroyDebugReportCallback) 
+	if (!dbgDestroyDebugReportCallback)
 	{
-		MessageBox(NULL, "GetInstanceProcAddr: Unable to find vkDestroyDebugReportCallbackEXT function.", "Alert2", MB_OK);
-		//MessageBox(NULL, L"GetInstanceProcAddr: Unable to find vkDestroyDebugReportCallbackEXT function.", L"Alert2", MB_OK);
+		std::cout << "GetInstanceProcAddr: Unable to find vkDestroyDebugReportCallbackEXT function.\n" << std::endl;
 		exit(1);
 	}
 
@@ -29,35 +30,62 @@ void vulkan::data::Debug_Log::Init(Instance * Instance)
 	create_info.pUserData = NULL;
 
 	err = dbgCreateDebugReportCallback(Instance->instance, &create_info, NULL, &debug_report_callback);
-	switch (err) 
+	switch (err)
 	{
 	case VK_SUCCESS:
 		break;
 	case VK_ERROR_OUT_OF_HOST_MEMORY:
-		MessageBox(NULL, "dbgCreateDebugReportCallback: out of host memory\n", "Alert", MB_OK);
-		//MessageBox(NULL, L"dbgCreateDebugReportCallback: out of host memory\n", L"Alert", MB_OK);
+		std::cout << "dbgCreateDebugReportCallback: out of host memory\n" << std::endl;
 		exit(1);
 		break;
 	default:
-		MessageBox(NULL, "dbgCreateDebugReportCallback: unknown failure\n", "Alert", MB_OK);
-		//MessageBox(NULL, L"dbgCreateDebugReportCallback: unknown failure\n", L"Alert", MB_OK);
+		std::cout << "dbgCreateDebugReportCallback: unknown failure\n" << std::endl;
 		exit(1);
 		break;
 	}
+	FILE* fp;
+	fp = fopen("Error_log.txt", "w");
+	fclose(fp);
+#endif //  _DEBUG
 }
 
 void vulkan::data::Debug_Log::Uninit(Instance * Instance)
 {
+	Instance = Instance;
+#ifdef _DEBUG
+
+	FILE* fp;
+	fp = fopen("Error_log.txt", "w+");
+	for (unsigned int i = 0; i < Log.size(); i++)
+	{
+		fprintf(fp,Log[i].data());
+	}
+	fclose(fp);
 	dbgDestroyDebugReportCallback(Instance->instance, debug_report_callback, NULL);
+#endif //  _DEBUG
 }
 
-VKAPI_ATTR VkBool32 VKAPI_CALL vulkan::data::Debug_Log::dbgFunc(VkDebugReportFlagsEXT msgFlags, VkDebugReportObjectTypeEXT objType, uint64_t srcObject, size_t location, int32_t msgCode, const char * pLayerPrefix, const char * pMsg, void * pUserData)
+VKAPI_ATTR VkBool32 VKAPI_CALL vulkan::data::Debug_Log::dbgFunc(
+	VkDebugReportFlagsEXT msgFlags, 
+	VkDebugReportObjectTypeEXT objType, 
+	uint64_t srcObject,
+	size_t location, 
+	int32_t msgCode, 
+	const char * pLayerPrefix, 
+	const char * pMsg, 
+	void * pUserData)
 {
+	msgFlags = msgFlags;
 	pUserData = pUserData;
 	objType = objType;
 	srcObject = srcObject;
 	location = location;
+	pMsg = pMsg;
+	pLayerPrefix = pLayerPrefix;
+	msgCode = msgCode;
 	std::ostringstream message;
+
+#ifdef _DEBUG
 
 	if (msgFlags & VK_DEBUG_REPORT_ERROR_BIT_EXT) 
 	{
@@ -80,6 +108,13 @@ VKAPI_ATTR VkBool32 VKAPI_CALL vulkan::data::Debug_Log::dbgFunc(VkDebugReportFla
 		message << "DEBUG: ";
 	}
 	message << "[" << pLayerPrefix << "] Code " << msgCode << " |" << pMsg  << "|\n";
+	Log.push_back(pMsg);
+	Log.push_back("\n");
+	std::string msg(pMsg);
+	FILE* fp;
+	fp = fopen("Vulkan_Error_log.txt", "w+");
+	fprintf(fp, msg.data());
+	fclose(fp);
 
 #ifdef _WIN32
 	//MessageBox(NULL, message.str().c_str(), "エラーメッセージ", MB_OK);
@@ -97,5 +132,6 @@ VKAPI_ATTR VkBool32 VKAPI_CALL vulkan::data::Debug_Log::dbgFunc(VkDebugReportFla
 	 * That's what would happen without validation layers, so we'll
 	 * keep that behavior here.
 	 */
+#endif //  _DEBUG
 	return false;
 }

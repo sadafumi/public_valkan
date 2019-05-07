@@ -1,27 +1,16 @@
 #ifdef DEBUG
 
 #endif // DEBUG
-#include "vulkan.h"
+#include "vulkan_api.h"
 #include <string>
-#include <iostream>
-
-
 #include <iostream>
 #include <fstream>
 using namespace std;
-/* コンパイルできないときは上の３行を
-#include <iostream.h>
-#include <fstream.h>
-に変えてみてください。*/
-
 
 std::vector<char> vulkan::Resources::Shader::Load(const std::string& filename)
 {
 	std::ifstream file(filename, std::ios::ate | std::ios::binary);
-	if (!file.is_open()) 
-	{
-		throw std::runtime_error("failed to open file!");
-	}
+	vulkan::Error::Window(!file.is_open(), "シェーダーファイルの読み込みに失敗しました");
 	size_t fileSize = (size_t)file.tellg();
 	std::vector<char> buffer(fileSize);
 	file.seekg(0);

@@ -1,6 +1,6 @@
-#include "vulkan.h"
+#include "vulkan_api.h"
 
-void vulkan::data::Depth_Buffer::Init(Utility::Int_Vec2 in_win,PhysicalDevice* in_phyDevice, Device* in_Device)
+void vulkan::data::Depth_Buffer::Init(Device* in_Device,PhysicalDevice* in_phyDevice)
 {
 	VkImageCreateInfo image_info = {};
 	if (this->format == VK_FORMAT_UNDEFINED) this->format = VK_FORMAT_D16_UNORM;
@@ -27,12 +27,13 @@ void vulkan::data::Depth_Buffer::Init(Utility::Int_Vec2 in_win,PhysicalDevice* i
 	image_info.pNext = NULL;
 	image_info.imageType = VK_IMAGE_TYPE_2D;
 	image_info.format = depth_format;
-	image_info.extent.width = in_win.x;
-	image_info.extent.height = in_win.y;
+	image_info.extent.width = in_Device->window_size.x;
+	image_info.extent.height = in_Device->window_size.y;
 	image_info.extent.depth = 1;
 	image_info.mipLevels = 1;
 	image_info.arrayLayers = 1;
 	image_info.samples = VK_SAMPLE_COUNT_1_BIT;
+	//image_info.initialLayout = VK_IMAGE_LAYOUT_PRESENT_SRC_KHR;
 	image_info.initialLayout = VK_IMAGE_LAYOUT_UNDEFINED;
 	image_info.queueFamilyIndexCount = 0;
 	image_info.pQueueFamilyIndices = NULL;
@@ -78,7 +79,7 @@ void vulkan::data::Depth_Buffer::Init(Utility::Int_Vec2 in_win,PhysicalDevice* i
 
 	mem_alloc.allocationSize = mem_reqs.size;
 	
-	vulkan::data::Checker::memory_type_from_properties(in_phyDevice, mem_reqs.memoryTypeBits, VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT, &mem_alloc.memoryTypeIndex);
+	vulkan::data::Checker::memory_type_from_properties(mem_reqs.memoryTypeBits, VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT, &mem_alloc.memoryTypeIndex);
 	/* Use the memory properties to determine the type of memory required */
 
 	/* Allocate memory */

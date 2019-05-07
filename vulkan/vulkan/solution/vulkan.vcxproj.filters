@@ -1,0 +1,257 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="ソース ファイル">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="ヘッダー ファイル">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="リソース ファイル">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="ソース ファイル\vulkan">
+      <UniqueIdentifier>{ed9e94b9-6914-4c94-bb93-717436183f08}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Utility">
+      <UniqueIdentifier>{639f1744-2276-413b-8bdb-4b44708b6828}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Object">
+      <UniqueIdentifier>{35264d13-a1c0-4831-9477-8ce0c2865495}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Object">
+      <UniqueIdentifier>{13db5fe4-04ed-4324-b58b-fc01dfd08885}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shader">
+      <UniqueIdentifier>{6b9dd6b3-b8de-49ea-819b-51528a0129e2}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\code\Graphics.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\main.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\Render.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\Wayland.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\Window.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\Windows_API.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\Xorg.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\Vulkan_Buffer.cpp">
+      <Filter>ソース ファイル\vulkan</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\Vulkan_Checker.cpp">
+      <Filter>ソース ファイル\vulkan</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\Vulkan_Command_Buffer.cpp">
+      <Filter>ソース ファイル\vulkan</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\Vulkan_Command_Pool.cpp">
+      <Filter>ソース ファイル\vulkan</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\Vulkan_Debug_Log.cpp">
+      <Filter>ソース ファイル\vulkan</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\Vulkan_Depth_Buffer.cpp">
+      <Filter>ソース ファイル\vulkan</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\Vulkan_Descriptor_pool.cpp">
+      <Filter>ソース ファイル\vulkan</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\Vulkan_Device.cpp">
+      <Filter>ソース ファイル\vulkan</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\Vulkan_Enumerate_Device.cpp">
+      <Filter>ソース ファイル\vulkan</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\Vulkan_Error_Window.cpp">
+      <Filter>ソース ファイル\vulkan</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\Vulkan_Fence.cpp">
+      <Filter>ソース ファイル\vulkan</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\Vulkan_FrameBuffer.cpp">
+      <Filter>ソース ファイル\vulkan</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\Vulkan_Global_Layout_Properties.cpp">
+      <Filter>ソース ファイル\vulkan</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\Vulkan_GLSLtoSPV.cpp">
+      <Filter>ソース ファイル\vulkan</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\Vulkan_Graphic_Queue.cpp">
+      <Filter>ソース ファイル\vulkan</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\Vulkan_Image.cpp">
+      <Filter>ソース ファイル\vulkan</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\Vulkan_ImageView.cpp">
+      <Filter>ソース ファイル\vulkan</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\Vulkan_Instance.cpp">
+      <Filter>ソース ファイル\vulkan</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\Vulkan_Physical_Device.cpp">
+      <Filter>ソース ファイル\vulkan</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\Vulkan_Pipeline.cpp">
+      <Filter>ソース ファイル\vulkan</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\Vulkan_Render_Pass.cpp">
+      <Filter>ソース ファイル\vulkan</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\Vulkan_Resources.cpp">
+      <Filter>ソース ファイル\vulkan</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\Vulkan_Scissor.cpp">
+      <Filter>ソース ファイル\vulkan</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\Vulkan_Semaphore.cpp">
+      <Filter>ソース ファイル\vulkan</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\Vulkan_Shader.cpp">
+      <Filter>ソース ファイル\vulkan</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\Vulkan_Surface.cpp">
+      <Filter>ソース ファイル\vulkan</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\Vulkan_Swap_Chain.cpp">
+      <Filter>ソース ファイル\vulkan</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\Vulkan_Texture.cpp">
+      <Filter>ソース ファイル\vulkan</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\Vulkan_Uniform_Buffer.cpp">
+      <Filter>ソース ファイル\vulkan</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\Vulkan_ViewPort.cpp">
+      <Filter>ソース ファイル\vulkan</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\Object.cpp">
+      <Filter>ソース ファイル\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\Utility_Vec4.cpp">
+      <Filter>ソース ファイル\Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\Utility_Vec3.cpp">
+      <Filter>ソース ファイル\Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\Utility_mtx4x4.cpp">
+      <Filter>ソース ファイル\Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\Utility_Ini_Vec2.cpp">
+      <Filter>ソース ファイル\Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\Utility.cpp">
+      <Filter>ソース ファイル\Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\Model.cpp">
+      <Filter>ソース ファイル\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Input.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="..\code\Program_Loop.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\code\mtf.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="..\code\mfm.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="..\code\Graphics.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="..\code\mtfv.hpp">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="..\code\Render.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="..\code\Utility.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="..\code\Wayland.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="..\code\Window.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="..\code\Window_Data.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="..\code\Windows_API.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="..\code\Xorg.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="..\code\Object.h">
+      <Filter>ヘッダー ファイル\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="..\code\Model.h">
+      <Filter>ヘッダー ファイル\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="..\code\mfv.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="..\code\vulkan_api.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="Input.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="..\code\Program_Loop.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="shader\2D_no_Texture.frag">
+      <Filter>Shader</Filter>
+    </None>
+    <None Include="shader\2D_Texture.frag">
+      <Filter>Shader</Filter>
+    </None>
+    <None Include="shader\3D_no_Texture.frag">
+      <Filter>Shader</Filter>
+    </None>
+    <None Include="shader\3D_Texture.frag">
+      <Filter>Shader</Filter>
+    </None>
+    <None Include="shader\2D_no_Texture.vert">
+      <Filter>Shader</Filter>
+    </None>
+    <None Include="shader\2D_Texture.vert">
+      <Filter>Shader</Filter>
+    </None>
+    <None Include="shader\3D_no_Texture.vert">
+      <Filter>Shader</Filter>
+    </None>
+    <None Include="shader\3D_Texture.vert">
+      <Filter>Shader</Filter>
+    </None>
+    <None Include="shader\3D_Model.frag">
+      <Filter>Shader</Filter>
+    </None>
+    <None Include="shader\3D_Model.vert">
+      <Filter>Shader</Filter>
+    </None>
+  </ItemGroup>
+</Project>

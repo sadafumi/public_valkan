@@ -1,4 +1,4 @@
-#include "vulkan.h"
+#include "vulkan_api.h"
 
 void vulkan::data::Command_Buffer::Init(Device * in_Device, Command_Pool* cmd_pool,int buff_size)
 {
@@ -10,6 +10,9 @@ void vulkan::data::Command_Buffer::Init(Device * in_Device, Command_Pool* cmd_po
 	cmd.commandBufferCount = buff_size;
 
 	vulkan::Error::Window(vkAllocateCommandBuffers(in_Device->device, &cmd, &this->cmd_buff),"コマンドバッファの作成に失敗");
+
+	this->scissor.Init(in_Device->window_size);
+	this->viewport.Init(in_Device->window_size);
 }
 
 void vulkan::data::Command_Buffer::Uninit(Device * in_Device, Command_Pool* cmd_pool)
@@ -30,8 +33,8 @@ void vulkan::data::Command_Buffer::submitCommand(Graphic_Queue * in_Q, Fence* in
 	submit_info[0].pWaitDstStageMask = &pipe_stage_flags;
 	submit_info[0].commandBufferCount = 1;
 	submit_info[0].pCommandBuffers = &cmd_buff;
-	//submit_info[0].signalSemaphoreCount = 0;
-	//submit_info[0].pSignalSemaphores = NULL;
+	submit_info[0].signalSemaphoreCount = 0;
+	submit_info[0].pSignalSemaphores = NULL;
 
 	if (in_fence == NULL)
 	{
@@ -41,6 +44,8 @@ void vulkan::data::Command_Buffer::submitCommand(Graphic_Queue * in_Q, Fence* in
 	{
 		vulkan::Error::Window(vkQueueSubmit(in_Q->graphics_queue, 1, submit_info, in_fence->Fence), "QueueSubmitエラー"); {}
 	}	
+
+
 }
 
 void vulkan::data::Command_Buffer::Wait(Graphic_Queue* in_Q)
@@ -57,6 +62,7 @@ void vulkan::data::Command_Buffer::Begin(Frame_Buffer* in_fb,int index)
 	inhInfo.framebuffer = in_fb->Frame_Buffer[index];
 	beginInfo.sType = VK_STRUCTURE_TYPE_COMMAND_BUFFER_BEGIN_INFO;
 	beginInfo.pInheritanceInfo = &inhInfo;
+	beginInfo.flags = VK_COMMAND_BUFFER_USAGE_ONE_TIME_SUBMIT_BIT;
 
 	vkBeginCommandBuffer(cmd_buff, &beginInfo);
 }
@@ -89,5 +95,13 @@ void vulkan::data::Command_Buffer::Begin_Render_pass(Utility::Int_Vec2 win, Fram
 void vulkan::data::Command_Buffer::End()
 {
 	vkEndCommandBuffer(cmd_buff);
+}
+
+void vulkan::data::Command_Buffer::Draw(uint32_t vertexCount, uint32_t instanceCount, uint32_t firstVertex, uint32_t firstInstance)
+{
+	vkCmdSetViewport(cmd_buff, 0, 1, &this->viewport.viewport);
+	vkCmdSetScissor(cmd_buff, 0, 1, &this->scissor.scissor);
+
+	vkCmdDraw(cmd_buff, vertexCount, instanceCount, firstVertex, firstInstance);
 }
 

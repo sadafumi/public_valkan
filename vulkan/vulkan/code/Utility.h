@@ -4,9 +4,16 @@
 //========================================================================
 #pragma once
 #include <cmath>
+#include <string>
+//#include "glm/glm.hpp"
 
 namespace Utility 
 {
+	class Path 
+	{
+	public:
+		static int EditPath(std::string *OutPath, std::string *InPath, std::string *AddPath);
+	};
 	class Vec2
 	{
 	public:
@@ -101,6 +108,7 @@ namespace Utility
 	{
 	public:
 		mtx4x4();
+		//mtx4x4(glm::mat4 in_mtx);
 		mtx4x4(float);
 		mtx4x4(Vec4, Vec4, Vec4, Vec4);
 		mtx4x4(	float, float, float, float, 
@@ -112,6 +120,7 @@ namespace Utility
 		static mtx4x4 Perspective_Direct(float, float, float, float);
 		static mtx4x4 Transform(float x, float y, float z);
 		static mtx4x4 Transform(Vec3 v);
+		static mtx4x4 Transverse(mtx4x4 mtx);
 		static mtx4x4 Rotation(float x, float y, float z);
 		static mtx4x4 Rotation(Vec3 v);
 		static mtx4x4 RotationX(float v);
@@ -129,8 +138,8 @@ namespace Utility
 	class math
 	{
 	public:
-		static float radians(float);
-		static float degrees(float);
+		static float To_radians(float);
+		static float To_degrees(float);
 		static float sin(float);
 		static float cos(float);
 		static float tan(float);

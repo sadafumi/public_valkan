@@ -1,0 +1,524 @@
+clang++ -c -I C:\Share\tools\glm-0.9.9.3\glm\glm -I C:\VulkanSDK\1.1.97.0\Include -I . -I "C:\Program Files (x86)\Microsoft SDKs\Windows\v7.1A\Include"
+ -Wall -W -std=c++11 -DBOOST_THREAD_USE_LIB -Wno-c++11-narrowing -D_M_IX86 -Wno-unknown-pragmas -Wno-reserved-user-defined-literal -fms-extensions -D_STDCALL_SUPPORTED -O2 -o Window.o Window.cpp
+In file included from Window.cpp:1:
+In file included from ./Window.h:8:
+In file included from ./glm/glm.hpp:105:
+In file included from ./glm/detail/setup.hpp:626:
+In file included from C:\Program Files (x86)\Microsoft Visual Studio\2019\Preview\VC\Tools\MSVC\14.20.27404\include\type_traits:6:
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Preview\VC\Tools\MSVC\14.20.27404\include\xstddef:289:8: error: 'auto' return without trailing
+      return type; deduced return types are a C++14 extension
+inline auto _Unfancy(_Ptrty _Ptr) { // converts from a fancy pointer to a plain pointer
+       ^
+In file included from Window.cpp:1:
+In file included from ./Window.h:8:
+In file included from ./glm/glm.hpp:105:
+In file included from ./glm/detail/setup.hpp:626:
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Preview\VC\Tools\MSVC\14.20.27404\include\type_traits:136:34: error: redefinition of
+      '_Is_function<_Ret (_Types...) __attribute__((fastcall))>'
+_NON_MEMBER_CALL_CV_REF_NOEXCEPT(_IS_FUNCTION)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Preview\VC\Tools\MSVC\14.20.27404\include\xstddef:354:72: note: expanded from macro
+      '_NON_MEMBER_CALL_CV_REF_NOEXCEPT'
+#define _NON_MEMBER_CALL_CV_REF_NOEXCEPT(FUNC) _NON_MEMBER_CALL_CV_REF(FUNC, )
+                                               ~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Preview\VC\Tools\MSVC\14.20.27404\include\xstddef:345:25: note: expanded from macro
+      '_NON_MEMBER_CALL_CV_REF'
+    _NON_MEMBER_CALL_CV(FUNC, , NOEXCEPT_OPT)       \
+    ~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Preview\VC\Tools\MSVC\14.20.27404\include\xstddef:339:22: note: expanded from macro
+      '_NON_MEMBER_CALL_CV'
+    _NON_MEMBER_CALL(FUNC, , REF_OPT, NOEXCEPT_OPT)         \
+    ~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Preview\VC\Tools\MSVC\14.20.27404\include\xstddef:334:20: note: expanded from macro
+      '_NON_MEMBER_CALL'
+    _EMIT_FASTCALL(FUNC, CV_OPT, REF_OPT, NOEXCEPT_OPT)       \
+    ~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Preview\VC\Tools\MSVC\14.20.27404\include\xstddef:309:48: note: expanded from macro '_EMIT_FASTCALL'
+#define _EMIT_FASTCALL(FUNC, OPT1, OPT2, OPT3) FUNC(__fastcall, OPT1, OPT2, OPT3)
+                                               ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Preview\VC\Tools\MSVC\14.20.27404\include\type_traits:130:12: note: expanded from macro
+      '_IS_FUNCTION'
+    struct _Is_function<_Ret CALL_OPT(_Types...) CV_OPT REF_OPT NOEXCEPT_OPT> \
+           ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Preview\VC\Tools\MSVC\14.20.27404\include\type_traits:136:34: note: previous definition is here
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Preview\VC\Tools\MSVC\14.20.27404\include\type_traits:136:34: error: redefinition of
+      '_Is_function<_Ret (_Types...) __attribute__((stdcall))>'
+_NON_MEMBER_CALL_CV_REF_NOEXCEPT(_IS_FUNCTION)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Preview\VC\Tools\MSVC\14.20.27404\include\xstddef:354:72: note: expanded from macro
+      '_NON_MEMBER_CALL_CV_REF_NOEXCEPT'
+#define _NON_MEMBER_CALL_CV_REF_NOEXCEPT(FUNC) _NON_MEMBER_CALL_CV_REF(FUNC, )
+                                               ~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Preview\VC\Tools\MSVC\14.20.27404\include\xstddef:345:25: note: expanded from macro
+      '_NON_MEMBER_CALL_CV_REF'
+    _NON_MEMBER_CALL_CV(FUNC, , NOEXCEPT_OPT)       \
+    ~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Preview\VC\Tools\MSVC\14.20.27404\include\xstddef:339:22: note: expanded from macro
+      '_NON_MEMBER_CALL_CV'
+    _NON_MEMBER_CALL(FUNC, , REF_OPT, NOEXCEPT_OPT)         \
+    ~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Preview\VC\Tools\MSVC\14.20.27404\include\xstddef:335:19: note: expanded from macro
+      '_NON_MEMBER_CALL'
+    _EMIT_STDCALL(FUNC, CV_OPT, REF_OPT, NOEXCEPT_OPT)        \
+    ~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Preview\VC\Tools\MSVC\14.20.27404\include\xstddef:316:47: note: expanded from macro '_EMIT_STDCALL'
+#define _EMIT_STDCALL(FUNC, OPT1, OPT2, OPT3) FUNC(__stdcall, OPT1, OPT2, OPT3)
+                                              ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Preview\VC\Tools\MSVC\14.20.27404\include\type_traits:130:12: note: expanded from macro
+      '_IS_FUNCTION'
+    struct _Is_function<_Ret CALL_OPT(_Types...) CV_OPT REF_OPT NOEXCEPT_OPT> \
+           ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Preview\VC\Tools\MSVC\14.20.27404\include\type_traits:136:34: note: previous definition is here
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Preview\VC\Tools\MSVC\14.20.27404\include\type_traits:136:34: error: redefinition of
+      '_Is_function<_Ret (_Types...) const __attribute__((fastcall))>'
+_NON_MEMBER_CALL_CV_REF_NOEXCEPT(_IS_FUNCTION)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Preview\VC\Tools\MSVC\14.20.27404\include\xstddef:354:72: note: expanded from macro
+      '_NON_MEMBER_CALL_CV_REF_NOEXCEPT'
+#define _NON_MEMBER_CALL_CV_REF_NOEXCEPT(FUNC) _NON_MEMBER_CALL_CV_REF(FUNC, )
+                                               ~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Preview\VC\Tools\MSVC\14.20.27404\include\xstddef:345:25: note: expanded from macro
+      '_NON_MEMBER_CALL_CV_REF'
+    _NON_MEMBER_CALL_CV(FUNC, , NOEXCEPT_OPT)       \
+    ~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Preview\VC\Tools\MSVC\14.20.27404\include\xstddef:340:22: note: expanded from macro
+      '_NON_MEMBER_CALL_CV'
+    _NON_MEMBER_CALL(FUNC, const, REF_OPT, NOEXCEPT_OPT)    \
+    ~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Preview\VC\Tools\MSVC\14.20.27404\include\xstddef:334:20: note: expanded from macro
+      '_NON_MEMBER_CALL'
+    _EMIT_FASTCALL(FUNC, CV_OPT, REF_OPT, NOEXCEPT_OPT)       \
+    ~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Preview\VC\Tools\MSVC\14.20.27404\include\xstddef:309:48: note: expanded from macro '_EMIT_FASTCALL'
+#define _EMIT_FASTCALL(FUNC, OPT1, OPT2, OPT3) FUNC(__fastcall, OPT1, OPT2, OPT3)
+                                               ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Preview\VC\Tools\MSVC\14.20.27404\include\type_traits:130:12: note: expanded from macro
+      '_IS_FUNCTION'
+    struct _Is_function<_Ret CALL_OPT(_Types...) CV_OPT REF_OPT NOEXCEPT_OPT> \
+           ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Preview\VC\Tools\MSVC\14.20.27404\include\type_traits:136:34: note: previous definition is here
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Preview\VC\Tools\MSVC\14.20.27404\include\type_traits:136:34: error: redefinition of
+      '_Is_function<_Ret (_Types...) const __attribute__((stdcall))>'
+_NON_MEMBER_CALL_CV_REF_NOEXCEPT(_IS_FUNCTION)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Preview\VC\Tools\MSVC\14.20.27404\include\xstddef:354:72: note: expanded from macro
+      '_NON_MEMBER_CALL_CV_REF_NOEXCEPT'
+#define _NON_MEMBER_CALL_CV_REF_NOEXCEPT(FUNC) _NON_MEMBER_CALL_CV_REF(FUNC, )
+                                               ~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Preview\VC\Tools\MSVC\14.20.27404\include\xstddef:345:25: note: expanded from macro
+      '_NON_MEMBER_CALL_CV_REF'
+    _NON_MEMBER_CALL_CV(FUNC, , NOEXCEPT_OPT)       \
+    ~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Preview\VC\Tools\MSVC\14.20.27404\include\xstddef:340:22: note: expanded from macro
+      '_NON_MEMBER_CALL_CV'
+    _NON_MEMBER_CALL(FUNC, const, REF_OPT, NOEXCEPT_OPT)    \
+    ~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Preview\VC\Tools\MSVC\14.20.27404\include\xstddef:335:19: note: expanded from macro
+      '_NON_MEMBER_CALL'
+    _EMIT_STDCALL(FUNC, CV_OPT, REF_OPT, NOEXCEPT_OPT)        \
+    ~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Preview\VC\Tools\MSVC\14.20.27404\include\xstddef:316:47: note: expanded from macro '_EMIT_STDCALL'
+#define _EMIT_STDCALL(FUNC, OPT1, OPT2, OPT3) FUNC(__stdcall, OPT1, OPT2, OPT3)
+                                              ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Preview\VC\Tools\MSVC\14.20.27404\include\type_traits:130:12: note: expanded from macro
+      '_IS_FUNCTION'
+    struct _Is_function<_Ret CALL_OPT(_Types...) CV_OPT REF_OPT NOEXCEPT_OPT> \
+           ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Preview\VC\Tools\MSVC\14.20.27404\include\type_traits:136:34: note: previous definition is here
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Preview\VC\Tools\MSVC\14.20.27404\include\type_traits:136:34: error: redefinition of
+      '_Is_function<_Ret (_Types...) volatile __attribute__((fastcall))>'
+_NON_MEMBER_CALL_CV_REF_NOEXCEPT(_IS_FUNCTION)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Preview\VC\Tools\MSVC\14.20.27404\include\xstddef:354:72: note: expanded from macro
+      '_NON_MEMBER_CALL_CV_REF_NOEXCEPT'
+#define _NON_MEMBER_CALL_CV_REF_NOEXCEPT(FUNC) _NON_MEMBER_CALL_CV_REF(FUNC, )
+                                               ~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Preview\VC\Tools\MSVC\14.20.27404\include\xstddef:345:25: note: expanded from macro
+      '_NON_MEMBER_CALL_CV_REF'
+    _NON_MEMBER_CALL_CV(FUNC, , NOEXCEPT_OPT)       \
+    ~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Preview\VC\Tools\MSVC\14.20.27404\include\xstddef:341:22: note: expanded from macro
+      '_NON_MEMBER_CALL_CV'
+    _NON_MEMBER_CALL(FUNC, volatile, REF_OPT, NOEXCEPT_OPT) \
+    ~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Preview\VC\Tools\MSVC\14.20.27404\include\xstddef:334:20: note: expanded from macro
+      '_NON_MEMBER_CALL'
+    _EMIT_FASTCALL(FUNC, CV_OPT, REF_OPT, NOEXCEPT_OPT)       \
+    ~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Preview\VC\Tools\MSVC\14.20.27404\include\xstddef:309:48: note: expanded from macro '_EMIT_FASTCALL'
+#define _EMIT_FASTCALL(FUNC, OPT1, OPT2, OPT3) FUNC(__fastcall, OPT1, OPT2, OPT3)
+                                               ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Preview\VC\Tools\MSVC\14.20.27404\include\type_traits:130:12: note: expanded from macro
+      '_IS_FUNCTION'
+    struct _Is_function<_Ret CALL_OPT(_Types...) CV_OPT REF_OPT NOEXCEPT_OPT> \
+           ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Preview\VC\Tools\MSVC\14.20.27404\include\type_traits:136:34: note: previous definition is here
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Preview\VC\Tools\MSVC\14.20.27404\include\type_traits:136:34: error: redefinition of
+      '_Is_function<_Ret (_Types...) volatile __attribute__((stdcall))>'
+_NON_MEMBER_CALL_CV_REF_NOEXCEPT(_IS_FUNCTION)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Preview\VC\Tools\MSVC\14.20.27404\include\xstddef:354:72: note: expanded from macro
+      '_NON_MEMBER_CALL_CV_REF_NOEXCEPT'
+#define _NON_MEMBER_CALL_CV_REF_NOEXCEPT(FUNC) _NON_MEMBER_CALL_CV_REF(FUNC, )
+                                               ~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Preview\VC\Tools\MSVC\14.20.27404\include\xstddef:345:25: note: expanded from macro
+      '_NON_MEMBER_CALL_CV_REF'
+    _NON_MEMBER_CALL_CV(FUNC, , NOEXCEPT_OPT)       \
+    ~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Preview\VC\Tools\MSVC\14.20.27404\include\xstddef:341:22: note: expanded from macro
+      '_NON_MEMBER_CALL_CV'
+    _NON_MEMBER_CALL(FUNC, volatile, REF_OPT, NOEXCEPT_OPT) \
+    ~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Preview\VC\Tools\MSVC\14.20.27404\include\xstddef:335:19: note: expanded from macro
+      '_NON_MEMBER_CALL'
+    _EMIT_STDCALL(FUNC, CV_OPT, REF_OPT, NOEXCEPT_OPT)        \
+    ~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Preview\VC\Tools\MSVC\14.20.27404\include\xstddef:316:47: note: expanded from macro '_EMIT_STDCALL'
+#define _EMIT_STDCALL(FUNC, OPT1, OPT2, OPT3) FUNC(__stdcall, OPT1, OPT2, OPT3)
+                                              ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Preview\VC\Tools\MSVC\14.20.27404\include\type_traits:130:12: note: expanded from macro
+      '_IS_FUNCTION'
+    struct _Is_function<_Ret CALL_OPT(_Types...) CV_OPT REF_OPT NOEXCEPT_OPT> \
+           ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Preview\VC\Tools\MSVC\14.20.27404\include\type_traits:136:34: note: previous definition is here
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Preview\VC\Tools\MSVC\14.20.27404\include\type_traits:136:34: error: redefinition of
+      '_Is_function<_Ret (_Types...) const volatile __attribute__((fastcall))>'
+_NON_MEMBER_CALL_CV_REF_NOEXCEPT(_IS_FUNCTION)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Preview\VC\Tools\MSVC\14.20.27404\include\xstddef:354:72: note: expanded from macro
+      '_NON_MEMBER_CALL_CV_REF_NOEXCEPT'
+#define _NON_MEMBER_CALL_CV_REF_NOEXCEPT(FUNC) _NON_MEMBER_CALL_CV_REF(FUNC, )
+                                               ~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Preview\VC\Tools\MSVC\14.20.27404\include\xstddef:345:25: note: expanded from macro
+      '_NON_MEMBER_CALL_CV_REF'
+    _NON_MEMBER_CALL_CV(FUNC, , NOEXCEPT_OPT)       \
+    ~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Preview\VC\Tools\MSVC\14.20.27404\include\xstddef:342:22: note: expanded from macro
+      '_NON_MEMBER_CALL_CV'
+    _NON_MEMBER_CALL(FUNC, const volatile, REF_OPT, NOEXCEPT_OPT)
+    ~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Preview\VC\Tools\MSVC\14.20.27404\include\xstddef:334:20: note: expanded from macro
+      '_NON_MEMBER_CALL'
+    _EMIT_FASTCALL(FUNC, CV_OPT, REF_OPT, NOEXCEPT_OPT)       \
+    ~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Preview\VC\Tools\MSVC\14.20.27404\include\xstddef:309:48: note: expanded from macro '_EMIT_FASTCALL'
+#define _EMIT_FASTCALL(FUNC, OPT1, OPT2, OPT3) FUNC(__fastcall, OPT1, OPT2, OPT3)
+                                               ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Preview\VC\Tools\MSVC\14.20.27404\include\type_traits:130:12: note: expanded from macro
+      '_IS_FUNCTION'
+    struct _Is_function<_Ret CALL_OPT(_Types...) CV_OPT REF_OPT NOEXCEPT_OPT> \
+           ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Preview\VC\Tools\MSVC\14.20.27404\include\type_traits:136:34: note: previous definition is here
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Preview\VC\Tools\MSVC\14.20.27404\include\type_traits:136:34: error: redefinition of
+      '_Is_function<_Ret (_Types...) const volatile __attribute__((stdcall))>'
+_NON_MEMBER_CALL_CV_REF_NOEXCEPT(_IS_FUNCTION)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Preview\VC\Tools\MSVC\14.20.27404\include\xstddef:354:72: note: expanded from macro
+      '_NON_MEMBER_CALL_CV_REF_NOEXCEPT'
+#define _NON_MEMBER_CALL_CV_REF_NOEXCEPT(FUNC) _NON_MEMBER_CALL_CV_REF(FUNC, )
+                                               ~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Preview\VC\Tools\MSVC\14.20.27404\include\xstddef:345:25: note: expanded from macro
+      '_NON_MEMBER_CALL_CV_REF'
+    _NON_MEMBER_CALL_CV(FUNC, , NOEXCEPT_OPT)       \
+    ~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Preview\VC\Tools\MSVC\14.20.27404\include\xstddef:342:22: note: expanded from macro
+      '_NON_MEMBER_CALL_CV'
+    _NON_MEMBER_CALL(FUNC, const volatile, REF_OPT, NOEXCEPT_OPT)
+    ~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Preview\VC\Tools\MSVC\14.20.27404\include\xstddef:335:19: note: expanded from macro
+      '_NON_MEMBER_CALL'
+    _EMIT_STDCALL(FUNC, CV_OPT, REF_OPT, NOEXCEPT_OPT)        \
+    ~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Preview\VC\Tools\MSVC\14.20.27404\include\xstddef:316:47: note: expanded from macro '_EMIT_STDCALL'
+#define _EMIT_STDCALL(FUNC, OPT1, OPT2, OPT3) FUNC(__stdcall, OPT1, OPT2, OPT3)
+                                              ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Preview\VC\Tools\MSVC\14.20.27404\include\type_traits:130:12: note: expanded from macro
+      '_IS_FUNCTION'
+    struct _Is_function<_Ret CALL_OPT(_Types...) CV_OPT REF_OPT NOEXCEPT_OPT> \
+           ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Preview\VC\Tools\MSVC\14.20.27404\include\type_traits:136:34: note: previous definition is here
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Preview\VC\Tools\MSVC\14.20.27404\include\type_traits:136:34: error: redefinition of
+      '_Is_function<_Ret (_Types...) & __attribute__((fastcall))>'
+_NON_MEMBER_CALL_CV_REF_NOEXCEPT(_IS_FUNCTION)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Preview\VC\Tools\MSVC\14.20.27404\include\xstddef:354:72: note: expanded from macro
+      '_NON_MEMBER_CALL_CV_REF_NOEXCEPT'
+#define _NON_MEMBER_CALL_CV_REF_NOEXCEPT(FUNC) _NON_MEMBER_CALL_CV_REF(FUNC, )
+                                               ~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Preview\VC\Tools\MSVC\14.20.27404\include\xstddef:346:25: note: expanded from macro
+      '_NON_MEMBER_CALL_CV_REF'
+    _NON_MEMBER_CALL_CV(FUNC, &, NOEXCEPT_OPT)      \
+    ~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Preview\VC\Tools\MSVC\14.20.27404\include\xstddef:339:22: note: expanded from macro
+      '_NON_MEMBER_CALL_CV'
+    _NON_MEMBER_CALL(FUNC, , REF_OPT, NOEXCEPT_OPT)         \
+    ~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Preview\VC\Tools\MSVC\14.20.27404\include\xstddef:334:20: note: expanded from macro
+      '_NON_MEMBER_CALL'
+    _EMIT_FASTCALL(FUNC, CV_OPT, REF_OPT, NOEXCEPT_OPT)       \
+    ~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Preview\VC\Tools\MSVC\14.20.27404\include\xstddef:309:48: note: expanded from macro '_EMIT_FASTCALL'
+#define _EMIT_FASTCALL(FUNC, OPT1, OPT2, OPT3) FUNC(__fastcall, OPT1, OPT2, OPT3)
+                                               ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Preview\VC\Tools\MSVC\14.20.27404\include\type_traits:130:12: note: expanded from macro
+      '_IS_FUNCTION'
+    struct _Is_function<_Ret CALL_OPT(_Types...) CV_OPT REF_OPT NOEXCEPT_OPT> \
+           ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Preview\VC\Tools\MSVC\14.20.27404\include\type_traits:136:34: note: previous definition is here
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Preview\VC\Tools\MSVC\14.20.27404\include\type_traits:136:34: error: redefinition of
+      '_Is_function<_Ret (_Types...) & __attribute__((stdcall))>'
+_NON_MEMBER_CALL_CV_REF_NOEXCEPT(_IS_FUNCTION)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Preview\VC\Tools\MSVC\14.20.27404\include\xstddef:354:72: note: expanded from macro
+      '_NON_MEMBER_CALL_CV_REF_NOEXCEPT'
+#define _NON_MEMBER_CALL_CV_REF_NOEXCEPT(FUNC) _NON_MEMBER_CALL_CV_REF(FUNC, )
+                                               ~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Preview\VC\Tools\MSVC\14.20.27404\include\xstddef:346:25: note: expanded from macro
+      '_NON_MEMBER_CALL_CV_REF'
+    _NON_MEMBER_CALL_CV(FUNC, &, NOEXCEPT_OPT)      \
+    ~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Preview\VC\Tools\MSVC\14.20.27404\include\xstddef:339:22: note: expanded from macro
+      '_NON_MEMBER_CALL_CV'
+    _NON_MEMBER_CALL(FUNC, , REF_OPT, NOEXCEPT_OPT)         \
+    ~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Preview\VC\Tools\MSVC\14.20.27404\include\xstddef:335:19: note: expanded from macro
+      '_NON_MEMBER_CALL'
+    _EMIT_STDCALL(FUNC, CV_OPT, REF_OPT, NOEXCEPT_OPT)        \
+    ~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Preview\VC\Tools\MSVC\14.20.27404\include\xstddef:316:47: note: expanded from macro '_EMIT_STDCALL'
+#define _EMIT_STDCALL(FUNC, OPT1, OPT2, OPT3) FUNC(__stdcall, OPT1, OPT2, OPT3)
+                                              ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Preview\VC\Tools\MSVC\14.20.27404\include\type_traits:130:12: note: expanded from macro
+      '_IS_FUNCTION'
+    struct _Is_function<_Ret CALL_OPT(_Types...) CV_OPT REF_OPT NOEXCEPT_OPT> \
+           ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Preview\VC\Tools\MSVC\14.20.27404\include\type_traits:136:34: note: previous definition is here
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Preview\VC\Tools\MSVC\14.20.27404\include\type_traits:136:34: error: redefinition of
+      '_Is_function<_Ret (_Types...) const & __attribute__((fastcall))>'
+_NON_MEMBER_CALL_CV_REF_NOEXCEPT(_IS_FUNCTION)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Preview\VC\Tools\MSVC\14.20.27404\include\xstddef:354:72: note: expanded from macro
+      '_NON_MEMBER_CALL_CV_REF_NOEXCEPT'
+#define _NON_MEMBER_CALL_CV_REF_NOEXCEPT(FUNC) _NON_MEMBER_CALL_CV_REF(FUNC, )
+                                               ~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Preview\VC\Tools\MSVC\14.20.27404\include\xstddef:346:25: note: expanded from macro
+      '_NON_MEMBER_CALL_CV_REF'
+    _NON_MEMBER_CALL_CV(FUNC, &, NOEXCEPT_OPT)      \
+    ~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Preview\VC\Tools\MSVC\14.20.27404\include\xstddef:340:22: note: expanded from macro
+      '_NON_MEMBER_CALL_CV'
+    _NON_MEMBER_CALL(FUNC, const, REF_OPT, NOEXCEPT_OPT)    \
+    ~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Preview\VC\Tools\MSVC\14.20.27404\include\xstddef:334:20: note: expanded from macro
+      '_NON_MEMBER_CALL'
+    _EMIT_FASTCALL(FUNC, CV_OPT, REF_OPT, NOEXCEPT_OPT)       \
+    ~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Preview\VC\Tools\MSVC\14.20.27404\include\xstddef:309:48: note: expanded from macro '_EMIT_FASTCALL'
+#define _EMIT_FASTCALL(FUNC, OPT1, OPT2, OPT3) FUNC(__fastcall, OPT1, OPT2, OPT3)
+                                               ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Preview\VC\Tools\MSVC\14.20.27404\include\type_traits:130:12: note: expanded from macro
+      '_IS_FUNCTION'
+    struct _Is_function<_Ret CALL_OPT(_Types...) CV_OPT REF_OPT NOEXCEPT_OPT> \
+           ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Preview\VC\Tools\MSVC\14.20.27404\include\type_traits:136:34: note: previous definition is here
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Preview\VC\Tools\MSVC\14.20.27404\include\type_traits:136:34: error: redefinition of
+      '_Is_function<_Ret (_Types...) const & __attribute__((stdcall))>'
+_NON_MEMBER_CALL_CV_REF_NOEXCEPT(_IS_FUNCTION)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Preview\VC\Tools\MSVC\14.20.27404\include\xstddef:354:72: note: expanded from macro
+      '_NON_MEMBER_CALL_CV_REF_NOEXCEPT'
+#define _NON_MEMBER_CALL_CV_REF_NOEXCEPT(FUNC) _NON_MEMBER_CALL_CV_REF(FUNC, )
+                                               ~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Preview\VC\Tools\MSVC\14.20.27404\include\xstddef:346:25: note: expanded from macro
+      '_NON_MEMBER_CALL_CV_REF'
+    _NON_MEMBER_CALL_CV(FUNC, &, NOEXCEPT_OPT)      \
+    ~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Preview\VC\Tools\MSVC\14.20.27404\include\xstddef:340:22: note: expanded from macro
+      '_NON_MEMBER_CALL_CV'
+    _NON_MEMBER_CALL(FUNC, const, REF_OPT, NOEXCEPT_OPT)    \
+    ~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Preview\VC\Tools\MSVC\14.20.27404\include\xstddef:335:19: note: expanded from macro
+      '_NON_MEMBER_CALL'
+    _EMIT_STDCALL(FUNC, CV_OPT, REF_OPT, NOEXCEPT_OPT)        \
+    ~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Preview\VC\Tools\MSVC\14.20.27404\include\xstddef:316:47: note: expanded from macro '_EMIT_STDCALL'
+#define _EMIT_STDCALL(FUNC, OPT1, OPT2, OPT3) FUNC(__stdcall, OPT1, OPT2, OPT3)
+                                              ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Preview\VC\Tools\MSVC\14.20.27404\include\type_traits:130:12: note: expanded from macro
+      '_IS_FUNCTION'
+    struct _Is_function<_Ret CALL_OPT(_Types...) CV_OPT REF_OPT NOEXCEPT_OPT> \
+           ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Preview\VC\Tools\MSVC\14.20.27404\include\type_traits:136:34: note: previous definition is here
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Preview\VC\Tools\MSVC\14.20.27404\include\type_traits:136:34: error: redefinition of
+      '_Is_function<_Ret (_Types...) volatile & __attribute__((fastcall))>'
+_NON_MEMBER_CALL_CV_REF_NOEXCEPT(_IS_FUNCTION)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Preview\VC\Tools\MSVC\14.20.27404\include\xstddef:354:72: note: expanded from macro
+      '_NON_MEMBER_CALL_CV_REF_NOEXCEPT'
+#define _NON_MEMBER_CALL_CV_REF_NOEXCEPT(FUNC) _NON_MEMBER_CALL_CV_REF(FUNC, )
+                                               ~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Preview\VC\Tools\MSVC\14.20.27404\include\xstddef:346:25: note: expanded from macro
+      '_NON_MEMBER_CALL_CV_REF'
+    _NON_MEMBER_CALL_CV(FUNC, &, NOEXCEPT_OPT)      \
+    ~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Preview\VC\Tools\MSVC\14.20.27404\include\xstddef:341:22: note: expanded from macro
+      '_NON_MEMBER_CALL_CV'
+    _NON_MEMBER_CALL(FUNC, volatile, REF_OPT, NOEXCEPT_OPT) \
+    ~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Preview\VC\Tools\MSVC\14.20.27404\include\xstddef:334:20: note: expanded from macro
+      '_NON_MEMBER_CALL'
+    _EMIT_FASTCALL(FUNC, CV_OPT, REF_OPT, NOEXCEPT_OPT)       \
+    ~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Preview\VC\Tools\MSVC\14.20.27404\include\xstddef:309:48: note: expanded from macro '_EMIT_FASTCALL'
+#define _EMIT_FASTCALL(FUNC, OPT1, OPT2, OPT3) FUNC(__fastcall, OPT1, OPT2, OPT3)
+                                               ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Preview\VC\Tools\MSVC\14.20.27404\include\type_traits:130:12: note: expanded from macro
+      '_IS_FUNCTION'
+    struct _Is_function<_Ret CALL_OPT(_Types...) CV_OPT REF_OPT NOEXCEPT_OPT> \
+           ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Preview\VC\Tools\MSVC\14.20.27404\include\type_traits:136:34: note: previous definition is here
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Preview\VC\Tools\MSVC\14.20.27404\include\type_traits:136:34: error: redefinition of
+      '_Is_function<_Ret (_Types...) volatile & __attribute__((stdcall))>'
+_NON_MEMBER_CALL_CV_REF_NOEXCEPT(_IS_FUNCTION)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Preview\VC\Tools\MSVC\14.20.27404\include\xstddef:354:72: note: expanded from macro
+      '_NON_MEMBER_CALL_CV_REF_NOEXCEPT'
+#define _NON_MEMBER_CALL_CV_REF_NOEXCEPT(FUNC) _NON_MEMBER_CALL_CV_REF(FUNC, )
+                                               ~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Preview\VC\Tools\MSVC\14.20.27404\include\xstddef:346:25: note: expanded from macro
+      '_NON_MEMBER_CALL_CV_REF'
+    _NON_MEMBER_CALL_CV(FUNC, &, NOEXCEPT_OPT)      \
+    ~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Preview\VC\Tools\MSVC\14.20.27404\include\xstddef:341:22: note: expanded from macro
+      '_NON_MEMBER_CALL_CV'
+    _NON_MEMBER_CALL(FUNC, volatile, REF_OPT, NOEXCEPT_OPT) \
+    ~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Preview\VC\Tools\MSVC\14.20.27404\include\xstddef:335:19: note: expanded from macro
+      '_NON_MEMBER_CALL'
+    _EMIT_STDCALL(FUNC, CV_OPT, REF_OPT, NOEXCEPT_OPT)        \
+    ~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Preview\VC\Tools\MSVC\14.20.27404\include\xstddef:316:47: note: expanded from macro '_EMIT_STDCALL'
+#define _EMIT_STDCALL(FUNC, OPT1, OPT2, OPT3) FUNC(__stdcall, OPT1, OPT2, OPT3)
+                                              ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Preview\VC\Tools\MSVC\14.20.27404\include\type_traits:130:12: note: expanded from macro
+      '_IS_FUNCTION'
+    struct _Is_function<_Ret CALL_OPT(_Types...) CV_OPT REF_OPT NOEXCEPT_OPT> \
+           ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Preview\VC\Tools\MSVC\14.20.27404\include\type_traits:136:34: note: previous definition is here
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Preview\VC\Tools\MSVC\14.20.27404\include\type_traits:136:34: error: redefinition of
+      '_Is_function<_Ret (_Types...) const volatile & __attribute__((fastcall))>'
+_NON_MEMBER_CALL_CV_REF_NOEXCEPT(_IS_FUNCTION)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Preview\VC\Tools\MSVC\14.20.27404\include\xstddef:354:72: note: expanded from macro
+      '_NON_MEMBER_CALL_CV_REF_NOEXCEPT'
+#define _NON_MEMBER_CALL_CV_REF_NOEXCEPT(FUNC) _NON_MEMBER_CALL_CV_REF(FUNC, )
+                                               ~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Preview\VC\Tools\MSVC\14.20.27404\include\xstddef:346:25: note: expanded from macro
+      '_NON_MEMBER_CALL_CV_REF'
+    _NON_MEMBER_CALL_CV(FUNC, &, NOEXCEPT_OPT)      \
+    ~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Preview\VC\Tools\MSVC\14.20.27404\include\xstddef:342:22: note: expanded from macro
+      '_NON_MEMBER_CALL_CV'
+    _NON_MEMBER_CALL(FUNC, const volatile, REF_OPT, NOEXCEPT_OPT)
+    ~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Preview\VC\Tools\MSVC\14.20.27404\include\xstddef:334:20: note: expanded from macro
+      '_NON_MEMBER_CALL'
+    _EMIT_FASTCALL(FUNC, CV_OPT, REF_OPT, NOEXCEPT_OPT)       \
+    ~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Preview\VC\Tools\MSVC\14.20.27404\include\xstddef:309:48: note: expanded from macro '_EMIT_FASTCALL'
+#define _EMIT_FASTCALL(FUNC, OPT1, OPT2, OPT3) FUNC(__fastcall, OPT1, OPT2, OPT3)
+                                               ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Preview\VC\Tools\MSVC\14.20.27404\include\type_traits:130:12: note: expanded from macro
+      '_IS_FUNCTION'
+    struct _Is_function<_Ret CALL_OPT(_Types...) CV_OPT REF_OPT NOEXCEPT_OPT> \
+           ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Preview\VC\Tools\MSVC\14.20.27404\include\type_traits:136:34: note: previous definition is here
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Preview\VC\Tools\MSVC\14.20.27404\include\type_traits:136:34: error: redefinition of
+      '_Is_function<_Ret (_Types...) const volatile & __attribute__((stdcall))>'
+_NON_MEMBER_CALL_CV_REF_NOEXCEPT(_IS_FUNCTION)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Preview\VC\Tools\MSVC\14.20.27404\include\xstddef:354:72: note: expanded from macro
+      '_NON_MEMBER_CALL_CV_REF_NOEXCEPT'
+#define _NON_MEMBER_CALL_CV_REF_NOEXCEPT(FUNC) _NON_MEMBER_CALL_CV_REF(FUNC, )
+                                               ~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Preview\VC\Tools\MSVC\14.20.27404\include\xstddef:346:25: note: expanded from macro
+      '_NON_MEMBER_CALL_CV_REF'
+    _NON_MEMBER_CALL_CV(FUNC, &, NOEXCEPT_OPT)      \
+    ~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Preview\VC\Tools\MSVC\14.20.27404\include\xstddef:342:22: note: expanded from macro
+      '_NON_MEMBER_CALL_CV'
+    _NON_MEMBER_CALL(FUNC, const volatile, REF_OPT, NOEXCEPT_OPT)
+    ~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Preview\VC\Tools\MSVC\14.20.27404\include\xstddef:335:19: note: expanded from macro
+      '_NON_MEMBER_CALL'
+    _EMIT_STDCALL(FUNC, CV_OPT, REF_OPT, NOEXCEPT_OPT)        \
+    ~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Preview\VC\Tools\MSVC\14.20.27404\include\xstddef:316:47: note: expanded from macro '_EMIT_STDCALL'
+#define _EMIT_STDCALL(FUNC, OPT1, OPT2, OPT3) FUNC(__stdcall, OPT1, OPT2, OPT3)
+                                              ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Preview\VC\Tools\MSVC\14.20.27404\include\type_traits:130:12: note: expanded from macro
+      '_IS_FUNCTION'
+    struct _Is_function<_Ret CALL_OPT(_Types...) CV_OPT REF_OPT NOEXCEPT_OPT> \
+           ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Preview\VC\Tools\MSVC\14.20.27404\include\type_traits:136:34: note: previous definition is here
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Preview\VC\Tools\MSVC\14.20.27404\include\type_traits:136:34: error: redefinition of
+      '_Is_function<_Ret (_Types...) && __attribute__((fastcall))>'
+_NON_MEMBER_CALL_CV_REF_NOEXCEPT(_IS_FUNCTION)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Preview\VC\Tools\MSVC\14.20.27404\include\xstddef:354:72: note: expanded from macro
+      '_NON_MEMBER_CALL_CV_REF_NOEXCEPT'
+#define _NON_MEMBER_CALL_CV_REF_NOEXCEPT(FUNC) _NON_MEMBER_CALL_CV_REF(FUNC, )
+                                               ~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Preview\VC\Tools\MSVC\14.20.27404\include\xstddef:347:25: note: expanded from macro
+      '_NON_MEMBER_CALL_CV_REF'
+    _NON_MEMBER_CALL_CV(FUNC, &&, NOEXCEPT_OPT)
+    ~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Preview\VC\Tools\MSVC\14.20.27404\include\xstddef:339:22: note: expanded from macro
+      '_NON_MEMBER_CALL_CV'
+    _NON_MEMBER_CALL(FUNC, , REF_OPT, NOEXCEPT_OPT)         \
+    ~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Preview\VC\Tools\MSVC\14.20.27404\include\xstddef:334:20: note: expanded from macro
+      '_NON_MEMBER_CALL'
+    _EMIT_FASTCALL(FUNC, CV_OPT, REF_OPT, NOEXCEPT_OPT)       \
+    ~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Preview\VC\Tools\MSVC\14.20.27404\include\xstddef:309:48: note: expanded from macro '_EMIT_FASTCALL'
+#define _EMIT_FASTCALL(FUNC, OPT1, OPT2, OPT3) FUNC(__fastcall, OPT1, OPT2, OPT3)
+                                               ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Preview\VC\Tools\MSVC\14.20.27404\include\type_traits:130:12: note: expanded from macro
+      '_IS_FUNCTION'
+    struct _Is_function<_Ret CALL_OPT(_Types...) CV_OPT REF_OPT NOEXCEPT_OPT> \
+           ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Preview\VC\Tools\MSVC\14.20.27404\include\type_traits:136:34: note: previous definition is here
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Preview\VC\Tools\MSVC\14.20.27404\include\type_traits:136:34: error: redefinition of
+      '_Is_function<_Ret (_Types...) && __attribute__((stdcall))>'
+_NON_MEMBER_CALL_CV_REF_NOEXCEPT(_IS_FUNCTION)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Preview\VC\Tools\MSVC\14.20.27404\include\xstddef:354:72: note: expanded from macro
+      '_NON_MEMBER_CALL_CV_REF_NOEXCEPT'
+#define _NON_MEMBER_CALL_CV_REF_NOEXCEPT(FUNC) _NON_MEMBER_CALL_CV_REF(FUNC, )
+                                               ~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Preview\VC\Tools\MSVC\14.20.27404\include\xstddef:347:25: note: expanded from macro
+      '_NON_MEMBER_CALL_CV_REF'
+    _NON_MEMBER_CALL_CV(FUNC, &&, NOEXCEPT_OPT)
+    ~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Preview\VC\Tools\MSVC\14.20.27404\include\xstddef:339:22: note: expanded from macro
+      '_NON_MEMBER_CALL_CV'
+    _NON_MEMBER_CALL(FUNC, , REF_OPT, NOEXCEPT_OPT)         \
+    ~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Preview\VC\Tools\MSVC\14.20.27404\include\xstddef:335:19: note: expanded from macro
+      '_NON_MEMBER_CALL'
+    _EMIT_STDCALL(FUNC, CV_OPT, REF_OPT, NOEXCEPT_OPT)        \
+    ~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Preview\VC\Tools\MSVC\14.20.27404\include\xstddef:316:47: note: expanded from macro '_EMIT_STDCALL'
+#define _EMIT_STDCALL(FUNC, OPT1, OPT2, OPT3) FUNC(__stdcall, OPT1, OPT2, OPT3)
+                                              ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Preview\VC\Tools\MSVC\14.20.27404\include\type_traits:130:12: note: expanded from macro
+      '_IS_FUNCTION'
+    struct _Is_function<_Ret CALL_OPT(_Types...) CV_OPT REF_OPT NOEXCEPT_OPT> \
+           ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Preview\VC\Tools\MSVC\14.20.27404\include\type_traits:136:34: note: previous definition is here
+fatal error: too many errors emitted, stopping now [-ferror-limit=]
+20 errors generated.
+make: *** [Window.o] エラー 1
+
+C:\Share\source\multi_compile - コピー\code>

@@ -1,5 +1,87 @@
-#include "vulkan.h"
-#include "mtfv.h"
+#include "vulkan_api.h"
+#include "mtf.h"
+//#include "mtfv.h"
+#include "mtfv.hpp"
+
+//
+//bool read_ppm(char const* const filename, int& width, int& height, uint64_t rowPitch, unsigned char* dataPtr) {
+//	// PPM format expected from http://netpbm.sourceforge.net/doc/ppm.html
+//	//  1. magic number
+//	//  2. whitespace
+//	//  3. width
+//	//  4. whitespace
+//	//  5. height
+//	//  6. whitespace
+//	//  7. max color value
+//	//  8. whitespace
+//	//  7. data
+//
+//	// Comments are not supported, but are detected and we kick out
+//	// Only 8 bits per channel is supported
+//	// If dataPtr is nullptr, only width and height are returned
+//
+//	// Read in values from the PPM file as characters to check for comments
+//	char magicStr[3] = {}, heightStr[6] = {}, widthStr[6] = {}, formatStr[6] = {};
+//
+//#ifndef __ANDROID__
+//	FILE* fPtr = fopen(filename, "rb");
+//#else
+//	FILE* fPtr = AndroidFopen(filename, "rb");
+//#endif
+//	if (!fPtr) {
+//		printf("Bad filename in read_ppm: %s\n", filename);
+//		return false;
+//	}
+//
+//	// Read the four values from file, accounting with any and all whitepace
+//	fscanf(fPtr, "%s %s %s %s ", magicStr, widthStr, heightStr, formatStr);
+//
+//	// Kick out if comments present
+//	if (magicStr[0] == '#' || widthStr[0] == '#' || heightStr[0] == '#' || formatStr[0] == '#') {
+//		printf("Unhandled comment in PPM file\n");
+//		return false;
+//	}
+//
+//	// Only one magic value is valid
+//	if (strncmp(magicStr, "P6", sizeof(magicStr))) {
+//		printf("Unhandled PPM magic number: %s\n", magicStr);
+//		return false;
+//	}
+//
+//	width = atoi(widthStr);
+//	height = atoi(heightStr);
+//
+//	// Ensure we got something sane for width/height
+//	static const int saneDimension = 32768;  //??
+//	if (width <= 0 || width > saneDimension) {
+//		printf("Width seems wrong.  Update read_ppm if not: %u\n", width);
+//		return false;
+//	}
+//	if (height <= 0 || height > saneDimension) {
+//		printf("Height seems wrong.  Update read_ppm if not: %u\n", height);
+//		return false;
+//	}
+//
+//	if (dataPtr == nullptr) {
+//		// If no destination pointer, caller only wanted dimensions
+//		return true;
+//	}
+//
+//	// Now read the data
+//	for (int y = 0; y < height; y++) {
+//		unsigned char* rowPtr = dataPtr;
+//		for (int x = 0; x < width; x++) {
+//			fread(rowPtr, 3, 1, fPtr);
+//			rowPtr[3] = 255; /* Alpha of 1 */
+//			rowPtr += 4;
+//		}
+//		dataPtr += rowPitch;
+//	}
+//	fclose(fPtr);
+//
+//	return true;
+//}
+
 
 void vulkan::Resources::Texture::set_image_layout(data::Graphic_Queue* in_Q, data::Command_Buffer* in_cmd, VkImage image, VkImageAspectFlags aspectMask, VkImageLayout old_image_layout, VkImageLayout new_image_layout, VkPipelineStageFlags src_stages, VkPipelineStageFlags dest_stages)
 {
@@ -64,22 +146,23 @@ void vulkan::Resources::Texture::set_image_layout(data::Graphic_Queue* in_Q, dat
 	default:
 		break;
 	}
-	(in_cmd->cmd_buff, src_stages, dest_stages, 0, 0, NULL, 0, NULL, 1, &image_memory_barrier);
+	vkCmdPipelineBarrier(in_cmd->cmd_buff, src_stages, dest_stages, 0, 0, NULL, 0, NULL, 1, &image_memory_barrier);
+	//(in_cmd->cmd_buff, src_stages, dest_stages, 0, 0, NULL, 0, NULL, 1, &image_memory_barrier);
 }
 
-void vulkan::Resources::Texture::Image( texture_object* Tex_obj, data::Device * in_Device, data::PhysicalDevice * PhyDevice, const char * tex_path, VkImageUsageFlags extraUsages, VkFormatFeatureFlags extraFeatures)
+void vulkan::Resources::Texture::Image( texture_object* Tex_obj, data::Device * in_Device, const char * tex_path, VkImageUsageFlags extraUsages, VkFormatFeatureFlags extraFeatures)
 {
 	extraUsages = extraUsages;
 	extraFeatures = extraFeatures;
-	mtfv::Texture in_Data;
-	in_Data.LoadTexture(tex_path,NULL,0);
+	mtf::Texture in_Data;
+	in_Data.LoadSize(tex_path);
 	
 	Tex_obj->tex_width = in_Data.Width;
 	Tex_obj->tex_height = in_Data.Height;
-	VkFormatProperties formatProps;
-	vkGetPhysicalDeviceFormatProperties(PhyDevice->Get_PhyDevice(), VK_FORMAT_R8G8B8A8_UNORM, &formatProps);
 
-	Tex_obj->needs_staging = (!(formatProps.linearTilingFeatures & VK_FORMAT_FEATURE_SAMPLED_IMAGE_BIT));
+	//read_ppm(tex_path, Tex_obj->tex_width, Tex_obj->tex_height, 0, NULL);
+	
+	Tex_obj->needs_staging = (!(in_Device->formatProps.linearTilingFeatures & VK_FORMAT_FEATURE_SAMPLED_IMAGE_BIT));
 
 	VkImageCreateInfo image_create_info = {};
 	image_create_info.sType = VK_STRUCTURE_TYPE_IMAGE_CREATE_INFO;
@@ -94,7 +177,9 @@ void vulkan::Resources::Texture::Image( texture_object* Tex_obj, data::Device * 
 	image_create_info.samples = VK_SAMPLE_COUNT_1_BIT;
 	image_create_info.tiling = VK_IMAGE_TILING_LINEAR;
 	image_create_info.initialLayout = VK_IMAGE_LAYOUT_PREINITIALIZED;
+	//image_create_info.initialLayout = VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL;
 	image_create_info.usage = Tex_obj->needs_staging ? (VK_IMAGE_USAGE_TRANSFER_SRC_BIT | extraUsages) : (VK_IMAGE_USAGE_SAMPLED_BIT | extraUsages);
+	//image_create_info.usage = VK_IMAGE_USAGE_TRANSFER_DST_BIT | extraUsages;
 	image_create_info.queueFamilyIndexCount = 0;
 	image_create_info.pQueueFamilyIndices = NULL;
 	image_create_info.sharingMode = VK_SHARING_MODE_EXCLUSIVE;
@@ -114,7 +199,7 @@ void vulkan::Resources::Texture::Image( texture_object* Tex_obj, data::Device * 
 
 	mem_alloc.allocationSize = mem_reqs.size;
 
-	vulkan::data::Checker::memory_type_from_properties(	PhyDevice, mem_reqs.memoryTypeBits,VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT | VK_MEMORY_PROPERTY_HOST_COHERENT_BIT,&mem_alloc.memoryTypeIndex);
+	vulkan::data::Checker::memory_type_from_properties(	 mem_reqs.memoryTypeBits,VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT | VK_MEMORY_PROPERTY_HOST_COHERENT_BIT,&mem_alloc.memoryTypeIndex);
 
 	vulkan::Error::Window(vkAllocateMemory(in_Device->device, &mem_alloc, NULL, &(Tex_obj->image_memory)),"メモリの確保に失敗しました");
 
@@ -134,7 +219,7 @@ void vulkan::Resources::Texture::Image( texture_object* Tex_obj, data::Device * 
 		buffer_create_info.sType = VK_STRUCTURE_TYPE_BUFFER_CREATE_INFO;
 		buffer_create_info.pNext = NULL;
 		buffer_create_info.flags = 0;
-		buffer_create_info.size = Tex_obj->tex_width * Tex_obj->tex_height * 4;
+		buffer_create_info.size = (Tex_obj->tex_width * Tex_obj->tex_height) * 4;
 		buffer_create_info.usage = VK_BUFFER_USAGE_TRANSFER_SRC_BIT;
 		buffer_create_info.sharingMode = VK_SHARING_MODE_EXCLUSIVE;
 		buffer_create_info.queueFamilyIndexCount = 0;
@@ -150,7 +235,7 @@ void vulkan::Resources::Texture::Image( texture_object* Tex_obj, data::Device * 
 		vkGetBufferMemoryRequirements(in_Device->device, Tex_obj->buffer, &mem_reqs);
 		buf_mem_alloc.allocationSize = mem_reqs.size;
 
-		vulkan::data::Checker::memory_type_from_properties(PhyDevice, mem_reqs.memoryTypeBits,
+		vulkan::data::Checker::memory_type_from_properties(mem_reqs.memoryTypeBits,
 			VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT | VK_MEMORY_PROPERTY_HOST_COHERENT_BIT, &buf_mem_alloc.memoryTypeIndex);
 
 		vulkan::Error::Window(vkAllocateMemory(in_Device->device, &buf_mem_alloc, NULL, &(Tex_obj->buffer_memory)),"Bufferの確保に失敗");
@@ -168,7 +253,8 @@ void vulkan::Resources::Texture::Image( texture_object* Tex_obj, data::Device * 
 	VkDeviceMemory mapped_memory = Tex_obj->needs_staging ? Tex_obj->buffer_memory : Tex_obj->image_memory;
 	vulkan::Error::Window(vkMapMemory(in_Device->device, Tex_obj->needs_staging ? Tex_obj->buffer_memory : Tex_obj->image_memory, 0, mem_reqs.size, 0, &data),"マップメモリーの作成に失敗");
 
-	in_Data.LoadTexture(tex_path, (unsigned char *)data, (unsigned int)layout.rowPitch);
+	in_Data.LoadData(tex_path, (unsigned char *)data, Tex_obj->needs_staging ? ((unsigned int)Tex_obj->tex_width * 4) : (unsigned int)layout.rowPitch);
+	//read_ppm(tex_path, Tex_obj->tex_width, Tex_obj->tex_height, Tex_obj->needs_staging ? (Tex_obj->tex_width * 4) : layout.rowPitch, (unsigned char*)data);
 
 	vkUnmapMemory(in_Device->device, mapped_memory);
 
@@ -191,6 +277,7 @@ void vulkan::Resources::Texture::Image( texture_object* Tex_obj, data::Device * 
 	/* create image view */
 	view_info.image = Tex_obj->image;
 	vulkan::Error::Window(vkCreateImageView(in_Device->device, &view_info, NULL, &Tex_obj->view),"イメージビューの作成");
+
 }
 
 void vulkan::Resources::Texture::Sampler(VkSampler * out, data::Device * in_Device)
@@ -215,11 +302,11 @@ void vulkan::Resources::Texture::Sampler(VkSampler * out, data::Device * in_Devi
 	vulkan::Error::Window( vkCreateSampler(in_Device->device, &samplerCreateInfo, NULL, out),"Samplerの作成に失敗しました");
 }
 
-void vulkan::Resources::Texture::Create(Texture* in_tex, data::Device* in_Device, data::PhysicalDevice* in_PhyDevice,const char * tex_path, VkImageUsageFlags extraUsages, VkFormatFeatureFlags extraFeatures)
+void vulkan::Resources::Texture::Create(Texture* in_tex, data::Device* in_Device, const char * tex_path, VkImageUsageFlags extraUsages, VkFormatFeatureFlags extraFeatures)
 {
 	texture_object Tex_obj = {};
 
-	Image(&Tex_obj, in_Device, in_PhyDevice,  tex_path, extraUsages, extraFeatures);
+	Image(&Tex_obj, in_Device, tex_path, extraUsages, extraFeatures);
 	
 	Sampler(&Tex_obj.sampler,in_Device);
 	

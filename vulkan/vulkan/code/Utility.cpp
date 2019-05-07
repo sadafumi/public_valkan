@@ -1,6 +1,7 @@
 #include "Utility.h"
 #include <cmath>
 #include <assert.h>
+#include <Windows.h>
 
 const float Utility::math::rad_PI = 0.01745329251994329576923690768489f;
 const float Utility::math::deg_PI = 57.295779513082320876798154814105f;
@@ -48,12 +49,12 @@ Utility::Int_Vec4::Int_Vec4(int in_x, int in_y, int in_z,int in_w)
 	this->w = in_w;
 }
 
-float Utility::math::radians(float in)
+float Utility::math::To_radians(float in)
 {
 	return in * rad_PI;
 }
 
-float Utility::math::degrees(float in)
+float Utility::math::To_degrees(float in)
 {
 	return in * deg_PI;
 }
@@ -73,3 +74,14 @@ float Utility::math::tan(float in)
 	return std::tan(in);
 }
 
+int Utility::Path::EditPath(std::string * OutPath, std::string * InPath, std::string * AddPath)
+{
+	std::string Buff;
+	int LastPoint = 0;
+	LastPoint = InPath->rfind("/");
+	Buff = InPath->substr(0, LastPoint + 1);
+
+	*OutPath = Buff + *AddPath;
+
+	return LastPoint;
+}

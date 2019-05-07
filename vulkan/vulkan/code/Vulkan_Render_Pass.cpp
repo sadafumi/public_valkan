@@ -1,4 +1,4 @@
-#include "vulkan.h"
+#include "vulkan_api.h"
 
 
 void vulkan::data::Render_Pass::Init(Device* in_Device, Swap_Chain* in_swapchain, Depth_Buffer* in_Depth_Buffer, bool deps_flag,bool clear, VkImageLayout finalLayout)
@@ -62,7 +62,7 @@ void vulkan::data::Render_Pass::Init(Device* in_Device, Swap_Chain* in_swapchain
 	renderPassInfo.dependencyCount = 0;
 	renderPassInfo.pDependencies = NULL;
 
-	vulkan::Error::Window(vkCreateRenderPass(in_Device->device, &renderPassInfo, nullptr, &RenderPass),"レンダーパスの作成に失敗");
+	vulkan::Error::Window(vkCreateRenderPass(in_Device->device, &renderPassInfo, NULL, &RenderPass),"レンダーパスの作成に失敗");
 }
 
 void vulkan::data::Render_Pass::Uninit(Device* in_Device)

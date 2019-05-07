@@ -1,7 +1,5 @@
-#include "vulkan.h"
+#include "vulkan_api.h"
 #include <vector>
-#include <vulkan/vulkan.h>
-#include <vulkan/vulkan_win32.h>
 
 void vulkan::data::Instance::Init()
 {
@@ -20,9 +18,24 @@ void vulkan::data::Instance::Init()
 	instance_layer_names.push_back("VK_LAYER_LUNARG_standard_validation");
 
 	instance_extension_names.push_back(VK_KHR_SURFACE_EXTENSION_NAME);
+#ifdef __ANDROID__
+	instance_extension_names.push_back(VK_KHR_ANDROID_SURFACE_EXTENSION_NAME);
+#elif defined(_WIN32)
 	instance_extension_names.push_back(VK_KHR_WIN32_SURFACE_EXTENSION_NAME);
+#elif defined(VK_USE_PLATFORM_IOS_MVK)
+	instance_extension_names.push_back(VK_MVK_IOS_SURFACE_EXTENSION_NAME);
+#elif defined(VK_USE_PLATFORM_MACOS_MVK)
+	instance_extension_names.push_back(VK_MVK_MACOS_SURFACE_EXTENSION_NAME);
+#elif defined(VK_USE_PLATFORM_WAYLAND_KHR)
+	instance_extension_names.push_back(VK_KHR_WAYLAND_SURFACE_EXTENSION_NAME);
+#else
+	instance_extension_names.push_back(VK_KHR_XCB_SURFACE_EXTENSION_NAME);
+#endif
+#ifdef _DEBUG
 	//instance_extension_names.push_back(VK_EXT_DEBUG_REPORT_SPEC_VERSION);
 	instance_extension_names.push_back(VK_EXT_DEBUG_REPORT_EXTENSION_NAME);
+#endif // _DEBUG
+
 
 	VkInstanceCreateInfo inst_info;
 	inst_info.sType = VK_STRUCTURE_TYPE_INSTANCE_CREATE_INFO;

@@ -1,4 +1,4 @@
-#include "vulkan.h"
+#include "vulkan_api.h"
 
 void vulkan::data::ViewPort::Init(Utility::Int_Vec2 in_win)
 {
@@ -9,8 +9,3 @@ void vulkan::data::ViewPort::Init(Utility::Int_Vec2 in_win)
 	viewport.x = 0;
 	viewport.y = 0;
 }
-void vulkan::data::ViewPort::Set(Command_Buffer* in_cmd_buff)
-{
-	vkCmdSetViewport(in_cmd_buff->cmd_buff, 0, 1, &viewport);
-}
-

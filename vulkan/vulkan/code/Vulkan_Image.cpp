@@ -1,4 +1,4 @@
-#include "vulkan.h"
+#include "vulkan_api.h"
 
 void vulkan::data::Image::Init(Device * in_Device, Swap_Chain * in_swapchain)
 {
@@ -31,7 +31,7 @@ void vulkan::data::Image::Image_Layoutting(Command_Buffer * in_cmd)
 	}
 
 	vkCmdPipelineBarrier(in_cmd->cmd_buff, VK_PIPELINE_STAGE_TOP_OF_PIPE_BIT, VK_PIPELINE_STAGE_TOP_OF_PIPE_BIT,
-		0, 0, nullptr, 0, nullptr, barriers.size(), barriers.data());
+		0, 0, NULL, 0, NULL, barriers.size(), barriers.data());
 }
 
 void vulkan::data::Image::barrierResource(Command_Buffer *in_cmd, int index, VkPipelineStageFlags srcStageFlags, VkPipelineStageFlags dstStageFlags, VkAccessFlags srcAccessMask, VkAccessFlags dstAccessMask, VkImageLayout srcImageLayout, VkImageLayout dstImageLayout)
@@ -47,5 +47,5 @@ void vulkan::data::Image::barrierResource(Command_Buffer *in_cmd, int index, VkP
 	barrier.srcQueueFamilyIndex = VK_QUEUE_FAMILY_IGNORED;
 	barrier.dstQueueFamilyIndex = VK_QUEUE_FAMILY_IGNORED;
 	barrier.subresourceRange = { VK_IMAGE_ASPECT_COLOR_BIT, 0, 1, 0, 1 };
-	vkCmdPipelineBarrier(in_cmd->cmd_buff, srcStageFlags, dstStageFlags, 0, 0, nullptr, 0, nullptr, 1, &barrier);
+	vkCmdPipelineBarrier(in_cmd->cmd_buff, srcStageFlags, dstStageFlags, 0, 0, NULL, 0, NULL, 1, &barrier);
 }

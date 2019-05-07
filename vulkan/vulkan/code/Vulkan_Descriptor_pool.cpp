@@ -1,4 +1,4 @@
-#include "vulkan.h"
+#include "vulkan_api.h"
 
 
 void vulkan::data::Descriptor_Pool::Init(Device* in_Device,bool tex_flag)
@@ -40,8 +40,6 @@ void vulkan::data::Descriptor_Pool::Create_Layout(Device * in_Device, bool tex_f
 		layout_bindings[1].pImmutableSamplers = NULL;
 	}
 
-	/* Next take layout bindings and use them to create a descriptor set layout
-	 */
 	VkDescriptorSetLayoutCreateInfo descriptor_layout = {};
 	descriptor_layout.sType = VK_STRUCTURE_TYPE_DESCRIPTOR_SET_LAYOUT_CREATE_INFO;
 	descriptor_layout.pNext = NULL;

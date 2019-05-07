@@ -1,5 +1,4 @@
-#include "vulkan.h"
-#include <vulkan/vulkan_win32.h>
+#include "vulkan_api.h"
 
 
 void vulkan::data::PhysicalDevice::Init(Instance * Instance, Global_Layer_Properties* layer)
